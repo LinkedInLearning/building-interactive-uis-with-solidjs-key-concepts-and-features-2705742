@@ -21,5 +21,8 @@
   "liveServer.settings.root": "/docs",
   "prettier.enable": true,
   "eslint.alwaysShowStatus": false,
-  "liveServer.settings.donotVerifyTags": true
+  "liveServer.settings.donotVerifyTags": true,
+  "files.exclude": {
+    "**/.*": true
+  }
 }
