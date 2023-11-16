@@ -20,6 +20,10 @@ function App() {
     taskInput.value = ''
   }
 
+  const deleteTask = (task) => {
+    setTaskList(taskList.filter((item) => item.id !== task.id))
+  }
+
   return (
     <div class="container mt-5 text-center">
       <h1 class="mb-4">My Task Tracker</h1>
@@ -47,7 +51,12 @@ function App() {
         <For each={taskList}>
           {(task) => (
             <div class="row row-cols-3 mb-3 justify-content-center">
-              <button class="btn btn-secondary w-auto">X</button>
+              <button
+                class="btn btn-secondary w-auto"
+                onClick={() => deleteTask(task)}
+              >
+                  X
+              </button>
               <div
                 class={`bg-light p-2 mx-2 ${
                   task.completed && 'text-decoration-line-through'
