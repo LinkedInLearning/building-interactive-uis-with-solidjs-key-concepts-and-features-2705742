@@ -1,4 +1,26 @@
+import { createStore } from 'solid-js/store'
+
 function App() {
+  const [taskList, setTaskList] = createStore([])
+
+  const addTask = (e) => {
+    e.preventDefault()
+
+    const taskInput = document.querySelector('#taskInput')
+
+    const newTask = {
+      id: Math.random().toString(36).substring(2),
+      text: taskInput.value,
+      completed: false,
+    }
+
+    setTaskList([newTask, ...taskList])
+
+    console.log(taskList)
+
+    taskInput.value = ''
+  }
+
   return (
     <div class="container mt-5 text-center">
       <h1 class="mb-4">My Task Tracker</h1>
@@ -11,7 +33,11 @@ function App() {
           id="taskInput"
           required
         />
-        <button class="btn btn-primary ms-3 w-auto" type="submit">
+        <button
+          class="btn btn-primary ms-3 w-auto"
+          type="submit"
+          onClick={(e) => addTask(e)}
+        >
           Add task
         </button>
       </form>
