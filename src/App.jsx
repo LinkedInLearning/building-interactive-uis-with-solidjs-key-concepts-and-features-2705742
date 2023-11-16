@@ -1,3 +1,4 @@
+import { For } from 'solid-js'
 import { createStore } from 'solid-js/store'
 
 function App() {
@@ -45,28 +46,26 @@ function App() {
       <div>
         <h4 class="text-muted mb-4">Tasks</h4>
 
-        <div class="row row-cols-3 mb-3 justify-content-center">
-          <button class="btn btn-secondary w-auto">X</button>
-          <div class="bg-light p-2 mx-2">My first task</div>
-          <input
-            type="checkbox"
-            role="button"
-            class="form-check-input h-auto px-3"
-          />
-        </div>
-
-        <div class="row row-cols-3 mb-3 justify-content-center">
-          <button class="btn btn-secondary w-auto">X</button>
-          <div class="bg-light p-2 mx-2 text-decoration-line-through">
-            My second task
-          </div>
-          <input
-            type="checkbox"
-            checked
-            role="button"
-            class="form-check-input h-auto px-3"
-          />
-        </div>
+        <For each={taskList}>
+          {(task) => (
+            <div class="row row-cols-3 mb-3 justify-content-center">
+              <button class="btn btn-secondary w-auto">X</button>
+              <div
+                class={`bg-light p-2 mx-2 ${
+                  task.completed && 'text-decoration-line-through'
+                }`}
+              >
+                {task.text}
+              </div>
+              <input
+                type="checkbox"
+                checked={task.completed}
+                role="button"
+                class="form-check-input h-auto px-3"
+              />
+            </div>
+          )}
+        </For>
       </div>
     </div>
   )
