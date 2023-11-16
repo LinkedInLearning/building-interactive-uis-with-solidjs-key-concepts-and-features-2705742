@@ -17,8 +17,6 @@ function App() {
 
     setTaskList([newTask, ...taskList])
 
-    console.log(taskList)
-
     taskInput.value = ''
   }
 
